@@ -4,9 +4,9 @@ const connectDB = require('./src/config/db');
 const authRoutes = require('./src/routes/authRoutes');
 const testRoutes = require('./src/routes/testRoutes');
 const productRoutes = require('./src/routes/productRoutes');
+const inventoryRoutes = require('./src/routes/inventoryRoutes');
 
 dotenv.config();
-
 connectDB();
 
 const app = express();
@@ -16,6 +16,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/test', testRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/inventory', inventoryRoutes);
 
 app.get('/', (req, res) => {
     res.send('Api Inventario Funcionando');

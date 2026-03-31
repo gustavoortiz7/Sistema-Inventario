@@ -6,7 +6,7 @@ const {
  getProducts,
  updateProduct,
  deleteProduct
-} = require('../controllers/productController');
+} = require('../controllers/productController.js');
 
 router.post('/', authMiddleware, createProduct);
 router.get('/', authMiddleware, getProducts);
