@@ -1,8 +1,14 @@
+import {useState} from 'react';
 import Login from './pages/Login';
+import Products from './pages/Products';
+
 function App() {
+  const [isLogged, setIsLogged] = useState(
+    !!localStorage.getItem('token')
+  );
   return (
     <div>
-      <Login />
+      {isLogged ? <Products /> : <Login />}
     </div>
   );
 }

@@ -14,7 +14,7 @@ function Login() {
    });
 
    localStorage.setItem('token', res.data.token);
-   alert('Login exitoso ');
+   window.location.reload();
   } catch (error) {
    console.error(error);
    console.error(error.response?.data);
