@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import API from '../services/api';
 
-function Login() {
+function Login({ setIsLogged }) {
  const [email, setEmail] = useState('');
  const [password, setPassword] = useState('');
 
@@ -14,7 +14,7 @@ function Login() {
    });
 
    localStorage.setItem('token', res.data.token);
-   window.location.reload();
+   setIsLogged(true);
   } catch (error) {
    console.error(error);
    console.error(error.response?.data);
@@ -23,22 +23,32 @@ function Login() {
  };
 
  return (
-  <div>
-   <h2>Login</h2>
+  <div className="flex items-center justify-center h-screen bg-gray-100">
+   <div className="bg-white p-8 rounded shadow-md w-80">
+    <h2 className="text-2xl font-bold mb-4 text-center">
+     Iniciar Sesión
+    </h2>
 
-   <input
-    type="email"
-    placeholder="Email"
-    onChange={(e) => setEmail(e.target.value)}
-   />
+    <input
+     className="border p-2 w-full mb-3 rounded"
+     placeholder="Email"
+     onChange={(e) => setEmail(e.target.value)}
+    />
 
-   <input
-    type="password"
-    placeholder="Password"
-    onChange={(e) => setPassword(e.target.value)}
-   />
+    <input
+     type="password"
+     className="border p-2 w-full mb-4 rounded"
+     placeholder="Contraseña"
+     onChange={(e) => setPassword(e.target.value)}
+    />
 
-   <button onClick={handleLogin}>Login</button>
+    <button
+     className="bg-blue-500 text-white w-full py-2 rounded hover:bg-blue-600"
+     onClick={handleLogin}
+    >
+     Ingresar
+    </button>
+   </div>
   </div>
  );
 }
