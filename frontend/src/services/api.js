@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
- baseURL: 'http://localhost:3000/api'
+ baseURL: 'https://sistema-inventario-backend-bk8j.onrender.com/api'
 });
 
 // Interceptor para agregar el token de autenticación a cada solicitud
