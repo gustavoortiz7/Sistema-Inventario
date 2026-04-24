@@ -20,8 +20,13 @@ app.use(cors({
     credentials: true
 }));
 
-// 👇 IMPORTANTE para preflight
-app.options('/*', cors());
+app.use((req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
 
 
 app.use(express.json());
