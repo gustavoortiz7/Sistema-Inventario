@@ -1,39 +1,22 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const cors = require('cors');
 const connectDB = require('./src/config/db');
 const authRoutes = require('./src/routes/authRoutes');
 const testRoutes = require('./src/routes/testRoutes');
 const productRoutes = require('./src/routes/productRoutes');
 const inventoryRoutes = require('./src/routes/inventoryRoutes');
+const cors = require('cors');
 
 dotenv.config();
 connectDB();
 
 const app = express();
 
-// 🔥 CONFIGURACIÓN SEGURA
-const corsOptions = {
-    origin: 'https://sistema-inventario-frontend-black.vercel.app',
+app.use(cors({
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-};
-
-// usar CORS
-app.use(cors(corsOptions));
-
-// 🔥 RESPONDER MANUALMENTE AL PREFLIGHT
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://sistema-inventario-frontend-black.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-
-    next();
-});
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 
 app.use(express.json());
