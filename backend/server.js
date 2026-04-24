@@ -5,7 +5,6 @@ const authRoutes = require('./src/routes/authRoutes');
 const testRoutes = require('./src/routes/testRoutes');
 const productRoutes = require('./src/routes/productRoutes');
 const inventoryRoutes = require('./src/routes/inventoryRoutes');
-const cors = require('cors');
 
 dotenv.config();
 connectDB();
