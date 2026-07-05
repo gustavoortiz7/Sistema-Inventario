@@ -28,20 +28,10 @@ if (!fs.existsSync(uploadsDir)) {
 app.use('/uploads', express.static(uploadsDir));
 
 app.use(cors({
- origin: 'https://sistema-inventario-frontend-black.vercel.app',
- methods: ['GET', 'POST', 'PUT', 'DELETE'],
- allowedHeaders: ['Content-Type', 'Authorization'],
- credentials: true
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
-app.use((req, res, next) => {
- if (req.method === 'OPTIONS') {
-  res.sendStatus(200);
- } else {
-  next();
- }
-});
-
 
 app.use(express.json());
 
@@ -55,11 +45,11 @@ app.use('/api/customers', customerRoutes);
 app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
- res.send('Api Inventario Funcionando');
+    res.send('Api Inventario Funcionando');
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
- console.log(`Servidor corriendo en el puerto ${PORT}`);
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });

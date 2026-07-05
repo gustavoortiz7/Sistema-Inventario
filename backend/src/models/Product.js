@@ -6,6 +6,26 @@ const productSchema = new mongoose.Schema({
   required: true
  },
  description: String,
+ category: {
+  type: String,
+  default: 'General'
+ },
+ provider: {
+  type: String,
+  default: ''
+ },
+ providerPhone: {
+  type: String,
+  default: ''
+ },
+ subCategory: {
+  type: String,
+  default: ''
+ },
+image: {
+    type: String,
+    default: ''
+},
  price: {
   type: Number,
   required: true
